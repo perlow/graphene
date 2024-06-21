@@ -396,6 +396,8 @@ class TypeMap(dict):
 
         if inspect.isclass(type_) and issubclass(type_, ObjectType):
             return type_._meta.name
+        elif isinstance(type_, str):
+            return type_
 
         return_type = self[type_name]
         return default_type_resolver(root, info, return_type)
